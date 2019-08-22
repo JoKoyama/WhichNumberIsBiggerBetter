@@ -29,7 +29,7 @@ public class BiggerNumberGame {
             score++;
             return "Correct";
         }
-        if (number2 == answer && number2>number1){
+        else if (number2 == answer && number2>number1){
             score++;
             return "Correct";
         }
