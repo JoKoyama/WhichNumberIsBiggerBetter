@@ -6,34 +6,41 @@ public class BiggerNumberGame {
     private int score;
     private int lowerLimit;
     private int upperLimit;
+    private String question;
 
     public BiggerNumberGame(int lowerLimit, int upperLimit) {
         this.lowerLimit = lowerLimit;
         this.upperLimit = upperLimit;
+        generateRandomNumbers();
     }
     public void generateRandomNumbers(){
         // generate a number between the lower and upper limits inclusive
         number1 = (int)(Math.random()*(upperLimit-lowerLimit+1)+lowerLimit);
         // store number in number1
         //generate another number and make sure that it's different
-        number2 = (int)(Math.random()*(upperLimit-lowerLimit+1)+lowerLimit);
-        while (number1 == number2){
+        do{
             number2 = (int)(Math.random()*(upperLimit-lowerLimit+1)+lowerLimit);
-        }
+        } while (number1 == number2);
         //store number in number2
+        question = "Which Number is Bigger?";
+    }
+    public int max(int firstNumber,int secondNumber){
+        if (firstNumber >= secondNumber){
+            return firstNumber;
+        }
+        else {
+            return secondNumber;
+        }
     }
 
     public String checkAnswer(int answer){
         // determine if the answer is right
-        if (number1 == answer && number1>number2){
-            score++;
-            return "Correct";
-        }
-        else if (number2 == answer && number2>number1){
+        if (answer == max(number1,number2)){
             score++;
             return "Correct";
         }
         else {
+            score--;
             return "Wrong";
         }
             //based on the values of number1 & number2
@@ -80,5 +87,13 @@ public class BiggerNumberGame {
 
     public void setUpperLimit(int upperLimit) {
         this.upperLimit = upperLimit;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 }
