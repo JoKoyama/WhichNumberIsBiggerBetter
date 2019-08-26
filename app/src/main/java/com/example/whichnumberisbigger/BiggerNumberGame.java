@@ -34,7 +34,7 @@ public class BiggerNumberGame {
     }
 
     public String checkAnswer(int answer){
-        // determine if the answer is right
+        // determine if the answer is right?
         if (answer == max(number1,number2)){
             score++;
             return "Correct";
